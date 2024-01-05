@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 # 4-hidden_discovery.py
-# program that prints all the names defined by the
-# compiled module hidden_4.pyc
 
 if __name__ == "__main__":
     """Print all names defined by hidden_4 module."""

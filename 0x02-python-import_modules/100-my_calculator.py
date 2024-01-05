@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 # 100-my_calculator.py
-# Write a program that imports all functions from the file
-# calculator_1.py and handles basic operations.
 
 if __name__ == "__main__":
     """Handle basic  operations."""

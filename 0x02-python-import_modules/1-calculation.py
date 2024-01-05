@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 # 1-calculation.py
-# program that imports functions from the file calculator_1.py, 
-# does some Maths, and prints the result
 
 if __name__ == "__main__":
     """Print the addition, subtraction, multiple and quotient of 10 and 5."""
