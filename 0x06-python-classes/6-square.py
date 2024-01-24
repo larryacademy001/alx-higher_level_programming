@@ -1,50 +1,49 @@
 #!/usr/bin/python3
-
-"""Square Class.
-
-This module contains a class that defines a square.
-
-Usage Example:
-
-    Square = __import__('6-square').Square
-
-    my_square = Square(3)
-    print(type(my_square))
-    print(my_square.__dict__)
-"""
+"""Defination of a class Square."""
 
 
 class Square:
-    """Defines the blueprint of a square.
-
-    Attribute:
-        size (int): An integer representing the object size.
-        position (int, int): The position of the new square.
     """
-
+        defines a square by size.
+    """
     def __init__(self, size=0, position=(0, 0)):
-        """An object constructor method."""
-        self.__size = size
-        self.__position = position
+        """
+        initialize a square
+            Args:
+                size (int): the size of the square.
+                position (int, int): the position of the square.
+        """
+        self.size = size
+        self.position = position
+
+    def area(self):
+        """ returns the current square area """
+        return (self.__size ** 2)
+
+    def my_print(self):
+        """Print the square with the # character."""
+        if self.__size == 0:
+            print("")
+            return
+
+        for _ in range(self.__position[1]):
+            print("")
+
+        for _ in range(self.__size):
+            for _ in range(self.__position[0]):
+                print(" ", end="")
+            for _ in range(self.__size):
+                print("#", end="")
+            print("")
 
     @property
     def size(self):
-        """Gets the size private attribute value.
-
-        Returns:
-            The size private attribute
-        """
-        return self.__size
+        """to retrive the size of square"""
+        return (self.__size)
 
     @size.setter
     def size(self, value):
-        """Sets the size private attribute value.
-
-        Validates the assignment of the size private attribute.
-
-        Arg:
-            value: the value to be set
-        """
+        """set the value of size"""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -53,47 +52,16 @@ class Square:
 
     @property
     def position(self):
-        """Gets the position private attribute value.
-
-        Returns:
-            The position private attribute
-        """
-        return self.__position
+        """get/set the current position of the square."""
+        return (self.__position)
 
     @position.setter
     def position(self, value):
-        """Sets the position private attribute value.
-
-        Validates the assignment of the position private attribute.
-
-        Arg:
-            value: the value to be set
-        """
-        if (
-            not isinstance(value, tuple)
-            or len(value) != 2
-            or not all(isinstance(num, int) for num in value)
-            or not all(num >= 0 for num in value)
-        ):
+        if not isinstance(value, tuple) or len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = value
-
-    def area(self):
-        """A public object method.
-
-        Returns:
-            The current square area
-        """
-        return self.__size**2
-
-    def my_print(self):
-        """Displays the square object with # character"""
-        if self.__size == 0:
-            print("")
-            return
-
-        [print("") for i in range(0, self.__position[1])]
-        for i in range(0, self.__size):
-            [print(" ", end="") for j in range(0, self.__position[0])]
-            [print("#", end="") for k in range(0, self.__size)]
-            print("")
+        elif not all(isinstance(num, int) for num in value):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        elif not all(num >= 0 for num in value):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        else:
+            self.__position = value
