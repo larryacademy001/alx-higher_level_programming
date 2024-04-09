@@ -1,1 +1,1 @@
-Monday the 5th
+0x12. JavaScript - Warm up
