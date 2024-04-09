@@ -5,7 +5,7 @@ const sba = process.argv.slice(2).map((x) => {
 if (sba.length <= 1) {
   console.log(0);
 } else {
-    console.log(sba.sort((a, b) => {
+  console.log(sba.sort((a, b) => {
     return b - a;
   })[1]);
 }
