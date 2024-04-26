@@ -10,23 +10,22 @@ def find_peak(list_of_integers):
     Returns: peak of list_of_integers or None
     """
     list_size = len(list_of_integers)
-    middle_element = list_size
+    middle_elem = list_size
     mid = list_size // 2
 
     if list_size == 0:
         return None
 
     while True:
-        middle_element = middle_element // 2
+        middle_elem = middle_elem // 2
         if (mid < list_size - 1 and
                 list_of_integers[mid] < list_of_integers[mid + 1]):
-            if middle_element // 2 == 0:
-                middle_element = 2
-            mid = mid + middle_element // 2
-        elif middle_element > 0 and
-         list_of_integers[mid] < list_of_integers[mid - 1]:
-            if middle_element // 2 == 0:
-                middle_element = 2
-            mid = mid - middle_element // 2
+            if middle_elem // 2 == 0:
+                middle_elem = 2
+            mid = mid + middle_elem // 2
+        elif middle_elem > 0 and list_of_integers[mid] < list_of_integers[mid - 1]:
+            if middle_elem // 2 == 0:
+                middle_elem = 2
+            mid = mid - middle_elem // 2
         else:
             return list_of_integers[mid]
