@@ -2,13 +2,13 @@
 
 const request = require('request');
 const fs = require('fs');
-const api_url = process.argv[2];
-const file_path = process.argv[3];
+const apiURL = process.argv[2];
+const filePath = process.argv[3];
 
-request(api_url, function (error, response, body) {
+request(apiURL, function (error, response, body) {
   if (error) {
     console.log(error);
   } else {
-    fs.writeFile(file_path, body, 'utf-8');
+    fs.writeFile(filePath, body, 'utf-8');
   }
 });
