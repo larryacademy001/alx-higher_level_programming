@@ -19,7 +19,7 @@ function getCharName (charUrl) {
 
 function doParse () {
   const movieID = process.argv[2];
-  const apiURL = 'https://swapi.co/api/films/' + movieID;
+  const apiURL = 'https://swapi-api.alx-tools.com/api/films/' + movieID;
 
   request(apiURL, function (error, response, body) {
     if (error != null) {
