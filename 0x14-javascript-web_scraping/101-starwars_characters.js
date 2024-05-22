@@ -1,24 +1,43 @@
 #!/usr/bin/node
-
+const process = require('process');
 const request = require('request');
-const id = process.argv[2];
-const url = `https://swapi-api.alx-tools.com/api/films/${id}`;
+let order = [];
+let resp = {};
 
-request.get(url, (error, response, body) => {
-  if (error) {
-    console.log(error);
-  } else {
-    const content = JSON.parse(body);
-    const characters = content.characters;
-    for (const character of characters) {
-      request.get(character, (error, response, body) => {
-        if (error) {
-          console.log(error);
-        } else {
-          const names = JSON.parse(body);
-          console.log(names.name);
-        }
+function getCharName (charUrl) {
+  let val;
+  val = request(charUrl, function (error, response, body) {
+    if (error != null) {
+      console.log(error);
+    } else {
+      let data = JSON.parse(body);
+      val = data['name'];
+      resp[charUrl] = val;
+    }
+  });
+}
+
+function doParse () {
+  let movieID = process.argv[2];
+  let apiURL = 'https://swapi.co/api/films/' + movieID;
+
+  request(apiURL, function (error, response, body) {
+    if (error != null) {
+      console.log(error);
+    } else {
+      let data = JSON.parse(body);
+      data['characters'].forEach(function (charUrl) {
+        order.push(charUrl);
+        getCharName(charUrl);
       });
     }
-  }
-});
+  });
+}
+
+doParse();
+setTimeout(function () {
+  // some stuff
+  order.forEach(function (apiURL) {
+    console.log(resp[apiURL]);
+  });
+}, 5000);
