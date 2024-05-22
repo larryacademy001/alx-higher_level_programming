@@ -11,7 +11,7 @@ function getCharName (charUrl) {
       console.log(error);
     } else {
       const data = JSON.parse(body);
-      val = data['name'];
+      val = data.name;
       resp[charUrl] = val;
     }
   });
@@ -26,7 +26,7 @@ function doParse () {
       console.log(error);
     } else {
       const data = JSON.parse(body);
-      data['characters'].forEach(function (charUrl) {
+      data.characters.forEach(function (charUrl) {
         order.push(charUrl);
         getCharName(charUrl);
       });
