@@ -1,8 +1,8 @@
 #!/usr/bin/node
 const process = require('process');
 const request = require('request');
-let order = [];
-let resp = {};
+const order = [];
+const resp = {};
 
 function getCharName (charUrl) {
   let val;
@@ -10,7 +10,7 @@ function getCharName (charUrl) {
     if (error != null) {
       console.log(error);
     } else {
-      let data = JSON.parse(body);
+      const data = JSON.parse(body);
       val = data['name'];
       resp[charUrl] = val;
     }
@@ -18,14 +18,14 @@ function getCharName (charUrl) {
 }
 
 function doParse () {
-  let movieID = process.argv[2];
-  let apiURL = 'https://swapi.co/api/films/' + movieID;
+  const movieID = process.argv[2];
+  const apiURL = 'https://swapi.co/api/films/' + movieID;
 
   request(apiURL, function (error, response, body) {
     if (error != null) {
       console.log(error);
     } else {
-      let data = JSON.parse(body);
+      const data = JSON.parse(body);
       data['characters'].forEach(function (charUrl) {
         order.push(charUrl);
         getCharName(charUrl);
